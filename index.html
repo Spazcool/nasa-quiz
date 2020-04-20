@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pop Quiz</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+    <link rel="stylesheet" href="style.css" />
+    <link type="image/x-icon" rel="shortcut icon" href="./images/clippy.png">
+  </head>
+
+  <body>
+    <div class="container" style="border: 2px solid red">
+        <div id="gameBoard" style="border: 2px solid blue">
+            <h2>Game Baord</h2>
+            <div id="timer"></div>
+            <!-- start button -->
+            <button type="button" id="startGame">Start</button>
+            <!-- question box -->
+            <div id='questionBox'></div>
+            <!-- answer box -->
+            <div class='answerBox'>
+                <button type="button" id="yesBtn">Yes</button>
+                <button type="button" id="noBtn">No</button>
+            </div>
+        </div>
+
+        <div id="scoreboard" style="visibility: hidden; border: 2px solid green">
+            <h2>Score Baord</h2>
+            <ul id="lastScores">
+                <!-- high scores page 
+                add initials
+                list former initials & score
+                -->
+            </ul>
+            <div id="gameScore">
+                <h2>your score: <span id="finalScore"></span></h2>
+                <input>enter name</input>
+                <button type="button" id="enterInitials">enter</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
