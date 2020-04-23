@@ -1,44 +1,51 @@
-let finalScoreElement = document.querySelector("#finalScore");
-let gameScoreElement = document.querySelector("#gameScore");
-let lastScores = [{name: 'Doug', value:10}, {name: 'Dan', value:1}, {name: 'Joe', value:8}];
-let lastScoresElement = document.querySelector("#lastScores");
-let questionBoxElement = document.querySelector("#questionBox");
+// let finalScoreElement = document.querySelector("#finalScore");
+// let gameScoreElement = document.querySelector("#gameScore");
+// let lastScoresElement = document.querySelector("#lastScores");
+// let timerElement = document.querySelector("#timer");
+// let scoreboardElement = document.querySelector("#scoreboard");
 let questions = [
-    {question: 'milk is good?', answer: 'yes', answered: null, id: 0}, 
-    {question: 'cheese is good?', answer: 'yes', answered: null, id: 1}, 
-    {question: 'meat is good?', answer: 'yes', answered: null, id: 2}
+    {question: 'milk is good?', answer: 'yes', answered: null, options: ['yes', 'no']}, 
+    {question: 'cheese is good?', answer: 'yes', answered: null, options: ['yes', 'no', 'maybe']}, 
+    {question: 'meat is good?', answer: 'maybe', answered: null, options: ['yes', 'no', 'maybe']}
 ];
+let questionBoxElement = document.querySelector("#questionBox");
 let score = 0;
-let scoreboardElement = document.querySelector("#scoreboard");
 let timeleft = 600;
-let timerElement = document.querySelector("#timer");
 let timerObj;
 
 function addScoreToBoard(){
-    // add score to array/localstorage
-    // pull array
-    // sort by score
-    // pop the lowest score if arr.length > 10
-    // foreach the mofos to the screen
-    
-// scores chrnologically || highest to lowest
-// lastScores.forEach((score) => {
-//     let listItem = document.createElement('li');
-//     listItem.innerHTML = `${score.name}: ${score.value}`;
-//     lastScoresElement.appendChild(listItem);
-// });
+    let lastScoresElement = document.querySelector("#lastScores");
+    let localSaves = JSON.parse(localStorage.getItem("lastScores"));
+    lastScoresElement.innerHTML = '';
+    // FIRST ENTRY? REDEFINE localSaves FROM null TO AN ARRAY
+    if(!localSaves){
+        localSaves = [];
+    }
+    // DON'T ALLOW MORE THAN 10 SAVES
+    if(localSaves.length >= 10){
+        localSaves.pop();
+    }
+    // ONLY PUSH TO ARRAY IF THERE'S A NAME VALUE
+    if(document.querySelector("#nameInput").value){
+        localSaves.push({name: document.querySelector("#nameInput").value, value: score});
+    }
+    localSaves.sort((a, b) => b.value - a.value);
 
+    localSaves.forEach((score) => {
+        let listItem = document.createElement('li');
+        listItem.textContent = `${score.name}: ${score.value}`;
+        lastScoresElement.appendChild(listItem);
+    });
+    localStorage.setItem("lastScores", JSON.stringify(localSaves));
 }
 
 function checkAnswer(event){
     let qid = parseInt(questionBoxElement.attributes["data-id"].value);
-    // THIS NEEDS TO BE MORE FLEXIBLE FOR MULITPLE CHOICE
-    if(event.target.id == "yesBtn" && questions[qid].answer == 'yes' ||
-        event.target.id == "noBtn" && questions[qid].answer == 'no'){
+
+    if(event.target.attributes[1].value == questions[qid].answer){
         score++;
         questions[qid].answered = true;
     }else{
-        score--;
         timeleft = timeleft - 100; 
         questions[qid].answered = false;
     }
@@ -46,12 +53,12 @@ function checkAnswer(event){
     if(!gameOver((qid + 1))){
         nextQuestion((qid + 1));
     }else{
-        scoreBoard()
+        showScoreBoard()
     }
 }
 
-function gameOver(nextQuestion){
-    if(score <=0 || timeleft <=0 || questions.length == nextQuestion){
+function gameOver(nextQuestionIndex){
+    if(timeleft <= 0 || questions.length == nextQuestionIndex){
         // STOP TIMER
         clearInterval(timerObj);
         return true;
@@ -61,63 +68,63 @@ function gameOver(nextQuestion){
 
 function nextQuestion(id){
     questionBoxElement.textContent = questions[id].question;
-    questionBoxElement.setAttribute("data-id", questions[id].id);
+    questionBoxElement.setAttribute("data-id", id);
+
+    document.querySelector(".answerBox").innerHTML = '';
+
+    questions[id]['options'].forEach((option) => {
+        let btn = document.createElement('button');
+        btn.textContent = option;
+        btn.type = 'button';
+        btn.setAttribute("data-id", option);
+        document.querySelector(".answerBox").append(btn);
+    })
 }
 
-function scoreBoard(){
+function showScoreBoard(){
     // TODO CARD THAT SLIDES INTO VIEW
-    scoreboardElement.style.visibility = 'visible';
+    document.querySelector("#scoreBoard").style.display = 'block';
+    document.querySelector("#questionCard").style.display = 'none';
     // TODO FADES
-    finalScoreElement.textContent = score;
-    // todo scores chrnologically || highest to lowest
-    lastScores.forEach((score) => {
-        let listItem = document.createElement('li');
-        listItem.innerHTML = `${score.name}: ${score.value}`;
-        lastScoresElement.appendChild(listItem);
-    });
-// <div id="scoreboard" style="visibility: hidden;">
-//     <ul id="scores">
-//         <!-- high scores page 
-//         add initials
-//         list former initials & score
-//         -->
-//     </ul>
-// </div>
+    document.querySelector("#finalScore").textContent = score;
+
+    addScoreToBoard()
 }
 
-//RUNS showcountdown EVERY SECOND
 function startcountdown() {
     timerObj = setInterval(function() {
         timeleft--;
-        timerElement.innerHTML = timeleft;
+        document.querySelector("#timer").innerHTML = timeleft;
     }, 1000);
 }
 
 function startGame(){
-    // hide start button
+    document.querySelector("#gameBoard").style.display = 'none';
+    document.querySelector("#questionCard").style.display = 'block';
+
     nextQuestion(0)
     startcountdown()
 }
 
 document.querySelector("#startGame").addEventListener('click', startGame);
 document.querySelector(".answerBox").addEventListener('click', checkAnswer);
-document.querySelector("#enterInitials").addEventListener('click', addScoreToBoard);
+document.querySelector("#enterInitials").addEventListener('click', (e) => {
+    addScoreToBoard();
+    e.target.setAttribute("disabled", "disabled");
+});
 
-// start button clicked
-    // timer starts
-    // display question
+// todo enter key is being a bitch
+document.querySelector("#enterInitials").addEventListener('submit', (e) => {
+    console.log(e)
+    if(e.keyCode === 13){
+        addScoreToBoard();
+        e.target.setAttribute("disabled", "disabled");
+    }
+});
 
-// question answered?
-    // tally true/false
-        // remove time from timer if false
-    // dispaly next question
-
-// question arr end? || timer = 0
-    // game over
-    // save resutls?
-        // take initials
-            // save initials and score together
-
-// localStorage.setItem("name", value);
-// localStorage.getItem("name");
+// TODO / nice to haves
+// * store in db
+// * restart quiz
+// * email results?
+// * fades or slide effects as cards swap
 
