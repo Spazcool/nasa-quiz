@@ -1,24 +1,35 @@
 body{
-    background-color: #9fb8ad;
-    background-image: linear-gradient(#9fb8ad 0%, #20a8b8 51%, #2cb5e8 75%);
-    background-repeat:no-repeat;
-    background-size:100vw 1000vh;
+    background-color: black;
+    background-image: url("https://www.transparenttextures.com/patterns/dark-wood.png");
 }
 
 form{
     margin-top: 1%;
 }
+
 main{
     margin-bottom: 10vh;
 }
 
 nav{
-    background-color: #343a55;
+    background-color: orange;
 }
-
 
 .aboutMe{
     margin-top: 1%;
+}
+
+.answerBox, .startBox{
+    bottom:0;
+    left:0;
+    position: absolute;
+    right:0;
+}
+
+.answerBox > button{
+    display: block;
+    margin: 10px 0;
+    width: 100%;
 }
 
 .card{
@@ -56,9 +67,19 @@ nav{
     -webkit-animation-name: fadeIn;
     animation-name: fadeIn;
 }
+
+.footer-copyright > a {
+    color: yellow;
+}
+
+.startBox{
+
+}
+
 .navbar-brand{
     /* color: white; */
 }
+
 #contactBtn{
     clear: both;
 }
@@ -77,4 +98,10 @@ nav{
 
 #scoreBoard{
     display: none;
+}
+
+#startGame{
+    display: block;
+    margin-bottom: 10px;
+    width: 100%;
 }

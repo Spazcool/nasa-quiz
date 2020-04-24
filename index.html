@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pop Quiz</title>
+    <title>Pop Quiz: Game</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
     <link rel="stylesheet" href="./style.css" />
@@ -12,7 +12,7 @@
 
   <body>
     <!-- NAVBAR -->
-    <nav class="navbar navbar-expand-lg navbar-dark col-lg-12">
+    <nav class="navbar navbar-expand-lg navbar-light col-lg-12">
         <a class="navbar-brand" href="index.html">Navbar</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -44,11 +44,11 @@
             <!-- STARTING CARD -->
             <div class="card col-md-10" id="gameBoard" style="border: 2px solid blue;">
                 <div class="card-body">
-                <h5 class="card-title">Game Board</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <div class="col-md-10">
-                    <button type="button" id="startGame">Start</button>
-                </div>
+                    <h5 class="card-title">Game Board</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <div class="col-md-12 startBox">
+                        <button type="button" class="btn btn-danger" id="startGame">Start</button>
+                    </div>
                 </div>
             </div>
             <!-- ONGOING GAME CARD -->
@@ -58,11 +58,8 @@
                         <div class="col-md-10" style="border: 2px solid black;"><h5 class="card-title">Question:</h5></div>
                         <div class="col-md-2">Time Left: <span id="timer"></span></div>
                     </div>
-                <p class="card-text" id='questionBox' style="border: 2px solid orange;"></p>
-                <div class='col-md-12 answerBox' style="border: 5px solid purple">
-                    <!-- <button type="button" id="yesBtn">Yes</button>
-                    <button type="button" id="noBtn">No</button> -->
-                </div>
+                    <p class="card-text" id='questionBox' style="border: 2px solid orange;"></p>
+                    <div class='col-md-12 answerBox' style="border: 5px solid purple"></div>
                 </div>
             </div>
             <!-- END GAME SCOREBOARD -->

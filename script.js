@@ -1,13 +1,9 @@
-// let finalScoreElement = document.querySelector("#finalScore");
-// let gameScoreElement = document.querySelector("#gameScore");
-// let lastScoresElement = document.querySelector("#lastScores");
-// let timerElement = document.querySelector("#timer");
-// let scoreboardElement = document.querySelector("#scoreboard");
 let questions = [
     {question: 'milk is good?', answer: 'yes', answered: null, options: ['yes', 'no']}, 
     {question: 'cheese is good?', answer: 'yes', answered: null, options: ['yes', 'no', 'maybe']}, 
     {question: 'meat is good?', answer: 'maybe', answered: null, options: ['yes', 'no', 'maybe']}
 ];
+
 let questionBoxElement = document.querySelector("#questionBox");
 let score = 0;
 let timeleft = 600;
@@ -37,12 +33,14 @@ function addScoreToBoard(){
         lastScoresElement.appendChild(listItem);
     });
     localStorage.setItem("lastScores", JSON.stringify(localSaves));
+
+    // TODO show play again button
 }
 
 function checkAnswer(event){
     let qid = parseInt(questionBoxElement.attributes["data-id"].value);
 
-    if(event.target.attributes[1].value == questions[qid].answer){
+    if(event.target.attributes[2].value == questions[qid].answer){
         score++;
         questions[qid].answered = true;
     }else{
@@ -67,15 +65,18 @@ function gameOver(nextQuestionIndex){
 }
 
 function nextQuestion(id){
+    let btnStyles = ['btn-primary', 'btn-warning', 'btn-secondary', 'btn-success', 'btn-danger', 'btn-info'];
+
     questionBoxElement.textContent = questions[id].question;
     questionBoxElement.setAttribute("data-id", id);
 
     document.querySelector(".answerBox").innerHTML = '';
 
-    questions[id]['options'].forEach((option) => {
+    questions[id]['options'].forEach((option, i) => {
         let btn = document.createElement('button');
-        btn.textContent = option;
+        btn.textContent = option.toUpperCase();
         btn.type = 'button';
+        btn.className = `btn ${btnStyles[i]}`;
         btn.setAttribute("data-id", option);
         document.querySelector(".answerBox").append(btn);
     })
@@ -110,10 +111,10 @@ document.querySelector("#startGame").addEventListener('click', startGame);
 document.querySelector(".answerBox").addEventListener('click', checkAnswer);
 document.querySelector("#enterInitials").addEventListener('click', (e) => {
     addScoreToBoard();
-    e.target.setAttribute("disabled", "disabled");
+    // e.target.setAttribute("disabled", "disabled");
 });
 
-// todo enter key is being a bitch
+// TODO enter key is being a bitch
 document.querySelector("#enterInitials").addEventListener('submit', (e) => {
     console.log(e)
     if(e.keyCode === 13){
@@ -127,4 +128,5 @@ document.querySelector("#enterInitials").addEventListener('submit', (e) => {
 // * restart quiz
 // * email results?
 // * fades or slide effects as cards swap
+// questions in a separate file
 
