@@ -1,14 +1,14 @@
 # 04 Web APIs: Code Quiz
-A simple timed quiz with multiple-choice questions. This app will run in the browser and features dynamically updated HTML and CSS powered by JavaScript. It also features a clean and polished user interface and is responsive, ensuring that it adapts to multiple screen sizes.
+A simple timed quiz with multiple-choice questions related to NASA. This app will run in the browser and features dynamically updated HTML and CSS powered by JavaScript. It also features a clean and polished user interface and is responsive, ensuring that it adapts to multiple screen sizes.
 
 <p align="center">
-   <img width="70%" height="300vh" src="./Images/desktop.gif">
-   <img width="20%" height="300vh" src="./Images/mobile.gif">
+   <img width="70%" height="300vh" src="./images/desktop.gif">
+   <img width="20%" height="300vh" src="./images/mobile.gif">
 </p>
 
 ## Getting Started
 
-Play on my [site](http://www.spazcool.com/nasa-quiz) or host locally after cloning from the [sepo](https://github.com/Spazcool/nasa-quiz).
+Play on my [site](http://www.spazcool.com/nasa-quiz) or host locally after cloning from the [repo](https://github.com/Spazcool/nasa-quiz).
 
 ### Prerequisites
 
