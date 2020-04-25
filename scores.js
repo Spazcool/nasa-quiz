@@ -16,6 +16,6 @@ function showScoreBoard(){
     });
 }
 
-$( document ).ready(
+$(document).ready(
     showScoreBoard()
 )

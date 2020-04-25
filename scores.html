@@ -11,45 +11,58 @@
   </head>
 
   <body>
-    <!-- NAVBAR -->
-    <nav class="navbar navbar-expand-lg navbar-light col-lg-12">
-        <a class="navbar-brand" href="index.html">Navbar</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-            aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-bars"></i>
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="index.html">About Me</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="portfolio.html">Portfolio</a>
-                        <a class="dropdown-item" href="contact.html">Contact</a>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </nav>
+        <!-- NAVBAR -->
+        <nav class="navbar navbar-expand-lg navbar-dark col-lg-12">
+            <div class="row">
+            <a class="navbar-brand col-md-1" href="index.html">
+                <img src="./images/nasa-logo.png" width="80%"/>
+            </a>
+            <button class="navbar-toggler col-md-1" type="button" data-toggle="collapse"
+                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-bars"></i>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="index.html">Quiz</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="scores.html">Scores</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            </div>
+        </nav>
+    
 
     <!-- MAIN -->
-    <main class="container-fluid">
-        <div class="row justify-content-md-center" style="border: 2px solid red">
+    <main class="container-fluid vertical-center">
+        <div class="row horizontal-center">
             <!-- END GAME SCOREBOARD -->
-            <div class="card col-md-10" id="scoreBoard" style="border: 2px solid green;">
+            <div class="card col-md-10" id="scoreBoard">
                 <div class="card-body">
-                    <h5 class="card-title">Score Board:</h5>
-                    <ul class="card-text" id='lastScores' style="border: 2px solid orange;"></ul>
+                    <div class="row card-title">
+                        <div class="col-md-10">
+                            <h4>Score Board:</h4>
+                        </div>
+                        <div class="col-md-2">
+                            <button type="button" class="btn btn-info hideCard">Hide</button>
+                        </div>
+                    </div>
+                    <div class="card-text">
+                        <ul id='lastScores'></ul>
+                    </div> 
                 </div>
             </div>
         </div>
     </main>
+
       <!-- FOOTER -->
     <footer class="page-footer font-small blue fixed-bottom">
         <div class="footer-copyright text-center py-3">
@@ -61,5 +74,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="./scores.js"></script>
+    <script src="./dynamicBackGround.js"></script>
   </body>
 </html>

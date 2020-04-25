@@ -1,12 +1,8 @@
-let questions = [
-    {question: 'milk is good?', answer: 'yes', answered: null, options: ['yes', 'no']}, 
-    {question: 'cheese is good?', answer: 'yes', answered: null, options: ['yes', 'no', 'maybe']}, 
-    {question: 'meat is good?', answer: 'maybe', answered: null, options: ['yes', 'no', 'maybe']}
-];
 
 let questionBoxElement = document.querySelector("#questionBox");
-let score = 0;
-let timeleft = 600;
+let questions;
+let score;
+let timeleft;
 let timerObj;
 
 function addScoreToBoard(){
@@ -33,8 +29,6 @@ function addScoreToBoard(){
         lastScoresElement.appendChild(listItem);
     });
     localStorage.setItem("lastScores", JSON.stringify(localSaves));
-
-    // TODO show play again button
 }
 
 function checkAnswer(event){
@@ -44,7 +38,7 @@ function checkAnswer(event){
         score++;
         questions[qid].answered = true;
     }else{
-        timeleft = timeleft - 100; 
+        timeleft = timeleft - 10; 
         questions[qid].answered = false;
     }
 
@@ -76,17 +70,15 @@ function nextQuestion(id){
         let btn = document.createElement('button');
         btn.textContent = option.toUpperCase();
         btn.type = 'button';
-        btn.className = `btn ${btnStyles[i]}`;
+        btn.className = `btn ${btnStyles[Math.floor(Math.random() * 6)]}`;
         btn.setAttribute("data-id", option);
         document.querySelector(".answerBox").append(btn);
     })
 }
 
 function showScoreBoard(){
-    // TODO CARD THAT SLIDES INTO VIEW
     document.querySelector("#scoreBoard").style.display = 'block';
     document.querySelector("#questionCard").style.display = 'none';
-    // TODO FADES
     document.querySelector("#finalScore").textContent = score;
 
     addScoreToBoard()
@@ -100,19 +92,56 @@ function startcountdown() {
 }
 
 function startGame(){
+    score = 0;
+    timeleft = 300;
+    document.querySelector("#scoreBoard").style.display = 'none';
     document.querySelector("#gameBoard").style.display = 'none';
     document.querySelector("#questionCard").style.display = 'block';
 
-    nextQuestion(0)
-    startcountdown()
+    // GRAB QUESTIONS FROM JSONBIN
+    fetch("https://api.jsonbin.io/b/5ea317591299b937423572d9", {
+        method: 'GET',
+        mode: 'cors',
+        cache: 'no-cache',
+        credentials: 'same-origin',
+        headers: {
+            'Content-Type': 'application/json',
+            "Secret-Key" : "$2b$10$g981kUQ7MZIS49KXZItHRe3djZN8boGzSrrSemBVUTAYSRGt.X4Aa"
+        }
+    })
+    .then((response) => {
+        return response.json();
+    })
+    .then((data) => {
+        questions = data.questions;
+    }).then(() => {
+        nextQuestion(0)
+        startcountdown()
+    })
 }
 
+document.querySelector("#playAgain").addEventListener('click', startGame);
 document.querySelector("#startGame").addEventListener('click', startGame);
 document.querySelector(".answerBox").addEventListener('click', checkAnswer);
 document.querySelector("#enterInitials").addEventListener('click', (e) => {
     addScoreToBoard();
-    // e.target.setAttribute("disabled", "disabled");
+    document.querySelector("#enterInitials").style.display = 'none';
+    document.querySelector("#playAgain").style.display = 'block';
 });
+
+// todo fades between cards
+// document.querySelector("#startGame").addEventListener('click', function(){
+    // $("#gameBoard").fadeOut("slow").animate({"margin-right": '+=200'}, "slow" );
+//     $("#gameBoard").slideDown(500, function(){
+//         alert('helo');
+//     })
+// });
+
+// todo hide card momentarily to view background image
+// document.querySelector(".hideCard").addEventListener("click", (e) => {
+    // console.log(e.target);
+    // $(this).parent().fadeOut("slow").fadeIn("slow");
+// })
 
 // TODO enter key is being a bitch
 document.querySelector("#enterInitials").addEventListener('submit', (e) => {
@@ -123,10 +152,10 @@ document.querySelector("#enterInitials").addEventListener('submit', (e) => {
     }
 });
 
+
 // TODO / nice to haves
-// * store in db
-// * restart quiz
-// * email results?
+// * store in db results
 // * fades or slide effects as cards swap
-// questions in a separate file
+// hide card button, to view the background
+// info on background image
 

@@ -1,10 +1,6 @@
 body{
     background-color: black;
-    background-image: url("https://www.transparenttextures.com/patterns/dark-wood.png");
-}
-
-form{
-    margin-top: 1%;
+    background-size: cover;
 }
 
 main{
@@ -12,18 +8,14 @@ main{
 }
 
 nav{
-    background-color: orange;
-}
-
-.aboutMe{
-    margin-top: 1%;
+    background-color: #b30000;
 }
 
 .answerBox, .startBox{
-    bottom:0;
-    left:0;
+    bottom: 5px;
+    left: 0;
     position: absolute;
-    right:0;
+    right: 0;
 }
 
 .answerBox > button{
@@ -39,61 +31,93 @@ nav{
     min-height: 39vh;
 }
 
-.card-img-top{
-    height: 40%;
-    -webkit-animation-duration: 5s;
-    animation-duration: 5s;
-    -webkit-animation-fill-mode: both;
-    animation-fill-mode: both;
-}
-
-@media only screen and (max-width: 600px) {
-    .card-img-top {
-        height: 60%;
-    }
-}
-
-@-webkit-keyframes fadeIn {
-    0% {opacity: 0;}
-    100% {opacity: 1;}
- }
-
- @keyframes fadeIn {
-    0% {opacity: 0;}
-    100% {opacity: 1;}
- }
- 
- .fadeIn{
-    -webkit-animation-name: fadeIn;
-    animation-name: fadeIn;
+.card-text{
+    padding: 5px;
+    border-radius: 5px;
+    background-color:#DCDCDC;
 }
 
 .footer-copyright > a {
     color: yellow;
 }
 
-.startBox{
+.hideCard{
+    display: block;
+    width: 100%;
+}
 
+.horizontal-center{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.navbar{
+    /* max-height: 5vh; */
 }
 
 .navbar-brand{
-    /* color: white; */
+    color: white;
+}
+.navbar-brand > img{
+    /* display: block; */
+    /* margin-left: auto;
+    margin-right: auto; */
+    /* width: 50%; */
+}
+
+.timer{
+    display: block;
+    width: 100%;
+}
+.timer:hover{
+    cursor: default;
+}
+@media screen and (max-width: 600px) {
+    .vertical-center{
+        display:block;
+        /* min-height: 90%;
+        min-height: 90vh; 
+        display: flex; */
+        /* align-items: center; 
+        justify-content: center; */
+    }
+    
+    .card{
+        min-height: 70vh;
+    }
+}
+
+.vertical-center{
+    min-height: 90%;
+    min-height: 90vh; 
+    display: flex;
+    align-items: center; 
+    justify-content: center;
 }
 
 #contactBtn{
     clear: both;
 }
 
-#questionCard{
+#enterInitials{
+    
+}
+
+#playAgain{
     display: none;
 }
 
-#meImg{
-    border-radius: 10px;
-    float: left;
-    height: 25vh;
-    margin: 0 20px 20px 0;
-    width: 25vh;
+#gameScore {
+    margin-top: 10px;
+}
+
+#gameScore > button{
+    margin-top: 10px;
+}
+
+#questionCard{
+    display: none;
 }
 
 #scoreBoard{
