@@ -1,7 +1,5 @@
 function showScoreBoard(){
-    // TODO CARD THAT SLIDES INTO VIEW
     document.querySelector("#scoreBoard").style.display = 'block';
-    // TODO FADES
 
     let lastScoresElement = document.querySelector("#lastScores");
     let localSaves = JSON.parse(localStorage.getItem("lastScores"));
