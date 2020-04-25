@@ -1,42 +1,33 @@
 # 04 Web APIs: Code Quiz
+A simple timed quiz with multiple-choice questions. This app will run in the browser and features dynamically updated HTML and CSS powered by JavaScript. It also features a clean and polished user interface and is responsive, ensuring that it adapts to multiple screen sizes.
 
-As you proceed in your career as a web developer, you will probably be asked to complete a coding assessment, which is typically a combination of multiple-choice questions and interactive challenges. Build a timed code quiz with multiple-choice questions. This app will run in the browser and feature dynamically updated HTML and CSS powered by your JavaScript code. It will also feature a clean and polished user interface and be responsive, ensuring that it adapts to multiple screen sizes.
+<p align="center">
+   <img width="70%" height="300vh" src="./Images/desktop.gif">
+   <img width="20%" height="300vh" src="./Images/mobile.gif">
+</p>
 
-## User Story
+## Getting Started
 
-```
-AS A coding bootcamp student
-I WANT to take a timed quiz on JavaScript fundamentals that stores high scores
-SO THAT I can gauge my progress compared to my peers
-```
+Play on my [site](http://www.spazcool.com/nasa-quiz) or host locally after cloning from the [sepo](https://github.com/Spazcool/nasa-quiz).
 
-## Acceptance Criteria
+### Prerequisites
 
-```
-GIVEN I am taking a code quiz
-WHEN I click the start button
-THEN a timer starts and I am presented with a question
-WHEN I answer a question
-THEN I am presented with another question
-WHEN I answer a question incorrectly
-THEN time is subtracted from the clock
-WHEN all questions are answered or the timer reaches 0
-THEN the game is over
-WHEN the game is over
-THEN I can save my initials and score
-```
+A browser and an internet connection is all you'll need.
 
-The following animation demonstrates the application functionality:
+### Installing
 
-![code quiz](./Assets/04-web-apis-homework-demo.gif)
+No installation required.
 
-### Review
+## Built With
 
-You are required to submit the following for review:
+* JS & jQuery
+* HTML
+* CSS & Bootstrap
 
-* The URL of the functional, deployed application.
+## Authors
 
-* The URL of the GitHub repository. Give the repository a unique name and include a README describing the project.
+* **Douglas Wright** - [Spazcool](https://github.com/Spazcool)
 
-- - -
-© 2019 Trilogy Education Services, a 2U, Inc. brand. All Rights Reserved.
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details

@@ -129,22 +129,9 @@ document.querySelector("#enterInitials").addEventListener('click', (e) => {
     document.querySelector("#playAgain").style.display = 'block';
 });
 
-// todo fades between cards
-// document.querySelector("#startGame").addEventListener('click', function(){
-    // $("#gameBoard").fadeOut("slow").animate({"margin-right": '+=200'}, "slow" );
-//     $("#gameBoard").slideDown(500, function(){
-//         alert('helo');
-//     })
-// });
-
-// todo hide card momentarily to view background image
-// document.querySelector(".hideCard").addEventListener("click", (e) => {
-    // console.log(e.target);
-    // $(this).parent().fadeOut("slow").fadeIn("slow");
-// })
-
 // TODO enter key is being a bitch
 document.querySelector("#enterInitials").addEventListener('submit', (e) => {
+    e.preventDefault();
     console.log(e)
     if(e.keyCode === 13){
         addScoreToBoard();
@@ -152,10 +139,4 @@ document.querySelector("#enterInitials").addEventListener('submit', (e) => {
     }
 });
 
-
-// TODO / nice to haves
-// * store in db results
-// * fades or slide effects as cards swap
-// hide card button, to view the background
-// info on background image
 

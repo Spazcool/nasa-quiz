@@ -1,4 +1,7 @@
 body{
+    height: 100%;
+    height: 100vh;
+    max-width: 100%;
     background-color: black;
     background-size: cover;
 }
@@ -14,7 +17,6 @@ nav{
 .answerBox, .startBox{
     bottom: 5px;
     left: 0;
-    position: absolute;
     right: 0;
 }
 
@@ -26,12 +28,12 @@ nav{
 
 .card{
     background-color: rgba(255,255,255, 1);
-    margin: 5px;
+    margin: 20px;
     padding: 0;
-    min-height: 39vh;
 }
 
 .card-text{
+    margin: 1em;
     padding: 5px;
     border-radius: 5px;
     background-color:#DCDCDC;
@@ -52,56 +54,16 @@ nav{
     justify-content: center;
 }
 
-.navbar{
-    /* max-height: 5vh; */
-}
-
 .navbar-brand{
     color: white;
 }
-.navbar-brand > img{
-    /* display: block; */
-    /* margin-left: auto;
-    margin-right: auto; */
-    /* width: 50%; */
-}
 
 .timer{
-    display: block;
     width: 100%;
 }
+
 .timer:hover{
     cursor: default;
-}
-@media screen and (max-width: 600px) {
-    .vertical-center{
-        display:block;
-        /* min-height: 90%;
-        min-height: 90vh; 
-        display: flex; */
-        /* align-items: center; 
-        justify-content: center; */
-    }
-    
-    .card{
-        min-height: 70vh;
-    }
-}
-
-.vertical-center{
-    min-height: 90%;
-    min-height: 90vh; 
-    display: flex;
-    align-items: center; 
-    justify-content: center;
-}
-
-#contactBtn{
-    clear: both;
-}
-
-#enterInitials{
-    
 }
 
 #playAgain{

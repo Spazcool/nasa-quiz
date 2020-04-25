@@ -7,90 +7,69 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
     <link rel="stylesheet" href="./style.css" />
-    <link type="image/x-icon" rel="shortcut icon" href="./images/clippy.png">
+    <link type="image/x-icon" rel="shortcut icon" href="./images/nasa-logo.png">
   </head>
 
   <body>
-    <!-- NAVBAR -->
-    <nav class="navbar navbar-expand-lg navbar-dark col-lg-12">
-        <div class="row">
-        <a class="navbar-brand col-xs-12 col-md-1" href="index.html">
-            <img src="./images/nasa-logo.png" width="100%"/>
-        </a>
-        <button class="navbar-toggler col-xs-12 col-md-1" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-            aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-bars"></i>
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="index.html">Quiz</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="scores.html">Scores</a>
-                    </div>
-                </li>
-            </ul>
-        </div>
-        </div>
-    </nav>
+   <!-- NAVBAR -->
+   <nav class="navbar navbar-expand-lg navbar-dark">
+    <a class="navbar-brand" href="index.html">
+        <img src="images/nasa-logo.png" width="30vh"/>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">Quiz</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="scores.html">Scores</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
 
     <!-- MAIN -->
-    <main class="container-fluid vertical-center">
-        <div class="row horizontal-center">
+    <main class="container-fluid">
+        <div class="row justify-content-md-center">
             <!-- STARTING CARD -->
-            <div class="card col-md-10" id="gameBoard">
+            <div class="card col-xs-12 col-md-10" id="gameBoard">
                 <div class="card-body">
                     <div class="row card-title">
-                        <h4 class="col-md-12">NASA Quiz</h4>
-                        <!-- TODO BUTTON TO HIDE CARDS TO ENJOY BACKGROUND -->
-                        <!-- <div class="col-md-2">
-                            <button type="button" class="btn btn-info hideCard">Hide</button>
-                        </div> -->
+                        <h4 class="col-xs-12 col-md-12">NASA Quiz</h4>
                     </div>
                     <p class="card-text">
                         Welcome to the NASA fanboy quiz. Enjoy the scenery, navigate to the highscores and when you're ready to play hit 'Start'.
                     </p>
-                    <div class="col-md-12 startBox">
+                    <div class="col-xs-12 col-md-12 startBox">
                         <button type="button" class="btn btn-danger" id="startGame">Start</button>
                     </div>
                 </div>
             </div>
             <!-- ONGOING GAME CARD -->
-            <div class="card col-md-10" id="questionCard">
+            <div class="card col-xs-12 col-md-10" id="questionCard">
                 <div class="card-body">
                     <div class="row card-title">
-                        <div class="col-md-10">
+                        <div class="col-xs-12 col-md-10">
                             <h4>Question:</h4>
                         </div>
-                        <div class="col-md-2">
+                        <div class="col-xs-12 col-md-2">
                             <button class="btn btn-warning timer" disabled="disabled">Time Left: <span id="timer"></span></button>
                         </div>
-                        <!-- TODO BUTTON TO HIDE CARDS TO ENJOY BACKGROUND -->
-                        <!-- <div class="col-md-2">
-                            <button type="button" class="btn btn-info hideCard">Hide</button>
-                        </div> -->
                     </div>
                     <p class="card-text" id='questionBox'></p>
-                    <div class='col-md-12 answerBox'></div>
+                    <div class='col-xs-12 col-md-12 answerBox'></div>
                 </div>
             </div>
             <!-- END GAME SCOREBOARD -->
-            <div class="card col-md-10" id="scoreBoard">
+            <div class="card col-xs-12 col-md-10" id="scoreBoard">
                 <div class="card-body">
                     <div class="row card-title">
-                        <div class="col-md-12">
+                        <div class=" col-xs-12 col-md-12">
                             <h4>Score Board:</h4>
                         </div>
-                        <!-- TODO BUTTON TO HIDE CARDS TO ENJOY BACKGROUND -->
-                        <!-- <div class="col-md-2">
-                            <button type="button" class="btn btn-info hideCard">Hide</button>
-                        </div> -->
                     </div>
                     <div class="card-text">
                         <ul id='lastScores'></ul>
@@ -98,11 +77,12 @@
                     <form id="gameScore">
                         <div class="form-group">
                             <div class="row">
-                                <div class="col-md-10">
-                                    <h5 for="nameInput">Enter your name:</h5>
+                                <div class="col-xs-12 col-md-10">
+                                    <h5>Your Score: <span id="finalScore"></span></h5>
                                 </div>
-                                <div class="col-md-2">
-                                    <h5>Final Score: <span id="finalScore"></span></h5>
+                            </br>
+                                <div class="col-xs-12 col-md-10">
+                                    <h5 for="nameInput">Your Name:</h5>
                                 </div>
                             </div>
                             <input type="text" class="form-control" id="nameInput" placeholder="Neil Armstrong" minlength="2" maxlength="20"></input>
@@ -120,11 +100,10 @@
             <a href="https://www.spazcool.com/">spazcool.com</a>
         </div>
     </footer>
-
-    <script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script src="./quiz.js"></script>
-    <script src="./dynamicBackGround.js"></script>
+    <script src="./js/quiz.js"></script>
+    <script src="./js/dynamicBackGround.js"></script>
   </body>
 </html>
