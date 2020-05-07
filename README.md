@@ -1,4 +1,4 @@
-# 04 Web APIs: Code Quiz
+# NASA Quiz
 A simple timed quiz with multiple-choice questions related to NASA. This app will run in the browser and features dynamically updated HTML and CSS powered by JavaScript. It also features a clean and polished user interface and is responsive, ensuring that it adapts to multiple screen sizes.
 
 <p align="center">
@@ -23,6 +23,8 @@ No installation required.
 * JS & jQuery
 * HTML
 * CSS & Bootstrap
+* NASA POD API
+* JSONbin API
 
 ## Authors
 
